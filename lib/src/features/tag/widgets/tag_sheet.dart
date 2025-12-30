@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/widgets/field.dart';
 import '../../../core/widgets/main_button.dart';
+import '../bloc/tag_bloc.dart';
+import '../models/tag.dart';
 
 class TagSheet extends StatefulWidget {
-  const TagSheet({super.key});
+  const TagSheet({super.key, this.tag});
+
+  final Tag? tag;
 
   @override
   State<TagSheet> createState() => _TagSheetState();
 }
 
 class _TagSheetState extends State<TagSheet> {
-  final tagController = TextEditingController();
+  final controller = TextEditingController();
+
+  void onSave() {
+    context.read<TagBloc>().add(widget.tag == null
+        ? AddTag(tag: Tag(title: controller.text))
+        : EditTag(tag: widget.tag!..title = controller.text));
+    context.pop();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller.text = widget.tag?.title ?? '';
+  }
 
   @override
   void dispose() {
-    tagController.dispose();
+    controller.dispose();
     super.dispose();
   }
 
@@ -24,7 +43,7 @@ class _TagSheetState extends State<TagSheet> {
     return Column(
       children: [
         Field(
-          controller: tagController,
+          controller: controller,
           hintText: 'New tag name',
           fieldType: FieldType.text,
           onChanged: (_) {
@@ -34,7 +53,7 @@ class _TagSheetState extends State<TagSheet> {
         const SizedBox(height: 24),
         MainButton(
           title: 'Save',
-          onPressed: tagController.text.isEmpty ? null : () {},
+          onPressed: controller.text.isEmpty ? null : onSave,
         ),
         const SizedBox(height: 46),
       ],

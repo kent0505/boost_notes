@@ -22,3 +22,9 @@ final class DeleteTag extends TagEvent {
 
   final Tag tag;
 }
+
+final class SelectTag extends TagEvent {
+  SelectTag({required this.tag});
+
+  final Tag tag;
+}

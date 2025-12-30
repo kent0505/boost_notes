@@ -18,6 +18,8 @@ abstract final class Assets {
   static const String add = 'assets/icons/add.svg';
   static const String chevron = 'assets/icons/chevron.svg';
   static const String close = 'assets/icons/close.svg';
+  static const String delete = 'assets/icons/delete.svg';
+  static const String edit = 'assets/icons/edit.svg';
   static const String plus = 'assets/icons/plus.svg';
   static const String search = 'assets/icons/search.svg';
   static const String settings = 'assets/icons/settings.svg';

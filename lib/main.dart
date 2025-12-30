@@ -13,6 +13,9 @@ import 'src/features/note/bloc/note_bloc.dart';
 import 'src/features/note/data/note_repository.dart';
 import 'src/features/note/models/note.dart';
 import 'src/features/onboard/data/onboard_repository.dart';
+import 'src/features/tag/bloc/tag_bloc.dart';
+import 'src/features/tag/data/tag_repository.dart';
+import 'src/features/tag/models/tag.dart';
 
 // final colors = Theme.of(context).extension<MyColors>()!;
 
@@ -36,7 +39,9 @@ void main() async {
     version: 1,
     onCreate: (db, version) async {
       logger('CREATE');
+
       await db.execute(Note.create);
+      await db.execute(Tag.create);
     },
   );
 
@@ -49,6 +54,9 @@ void main() async {
         RepositoryProvider<NoteRepository>(
           create: (context) => NoteRepositoryImpl(db: db),
         ),
+        RepositoryProvider<TagRepository>(
+          create: (context) => TagRepositoryImpl(db: db),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -56,6 +64,11 @@ void main() async {
             create: (context) => NoteBloc(
               repository: context.read<NoteRepository>(),
             ),
+          ),
+          BlocProvider(
+            create: (context) => TagBloc(
+              repository: context.read<TagRepository>(),
+            )..add(LoadTags()),
           ),
         ],
         child: MaterialApp.router(

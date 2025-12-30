@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants.dart';
-import '../../../core/widgets/button.dart';
 import '../../../core/widgets/field.dart';
-import '../../../core/widgets/icon_btn.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/sheet_widget.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../note/widgets/new_note.dart';
-import '../../tag/widgets/tag_sheet.dart';
+import '../../tag/widgets/tags_list.dart';
 import '../widgets/home_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -35,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 24 + MediaQuery.of(context).viewPadding.top,
@@ -56,53 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              SizedBox(
-                height: 38,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  children: [
-                    Container(
-                      height: 38,
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color(0xff6C6CFF),
-                            Color(0xff3670FA),
-                          ],
-                        ),
-                      ),
-                      child: Button(
-                        onPressed: () {},
-                        child: const Center(
-                          child: Text(
-                            'All Notes',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontFamily: AppFonts.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    IconBtn(
-                      asset: Assets.add,
-                      size: 34,
-                      onPressed: () {
-                        SheetWidget.open(
-                          context,
-                          title: 'Add tag',
-                          child: const TagSheet(),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
+              const TagsList(),
             ],
           ),
           Positioned(
@@ -114,8 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'New Note',
                 asset: Assets.plus,
                 width: Constants.mainButtonWidth,
-                onPressed: () {
-                  SheetWidget.open(
+                onPressed: () async {
+                  await SheetWidget.open(
                     context,
                     title: 'New note',
                     child: const NewNote(),

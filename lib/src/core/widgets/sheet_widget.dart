@@ -14,12 +14,12 @@ class SheetWidget extends StatelessWidget {
   final String title;
   final Widget child;
 
-  static void open(
+  static Future<void> open(
     BuildContext context, {
     required String title,
     required Widget child,
-  }) {
-    showModalBottomSheet(
+  }) async {
+    await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) {

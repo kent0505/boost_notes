@@ -20,7 +20,7 @@ final class Tag {
     );
   }
 
-  static const table = 'tests';
+  static const table = 'Tags';
   static const create = '''
     CREATE TABLE IF NOT EXISTS $table (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,3 +28,5 @@ final class Tag {
     )
     ''';
 }
+
+final allNotes = Tag(title: 'All Notes');

@@ -1,6 +1,25 @@
 part of 'tag_bloc.dart';
 
-@immutable
-sealed class TagState {}
+final class TagState {
+  TagState({
+    this.tags = const [],
+    required this.tag,
+    this.loading = false,
+  });
 
-final class TagInitial extends TagState {}
+  final List<Tag> tags;
+  final Tag tag;
+  final bool loading;
+
+  TagState copyWith({
+    List<Tag>? tags,
+    Tag? tag,
+    bool? loading,
+  }) {
+    return TagState(
+      tags: tags ?? this.tags,
+      tag: tag ?? this.tag,
+      loading: loading ?? this.loading,
+    );
+  }
+}
