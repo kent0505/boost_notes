@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../core/widgets/field.dart';
 import '../../../core/widgets/main_button.dart';
 
-class NewTag extends StatefulWidget {
-  const NewTag({super.key});
+class TagSheet extends StatefulWidget {
+  const TagSheet({super.key});
 
   @override
-  State<NewTag> createState() => _NewTagState();
+  State<TagSheet> createState() => _TagSheetState();
 }
 
-class _NewTagState extends State<NewTag> {
+class _TagSheetState extends State<TagSheet> {
   final tagController = TextEditingController();
 
   @override

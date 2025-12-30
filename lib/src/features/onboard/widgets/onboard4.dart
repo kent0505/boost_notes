@@ -18,7 +18,7 @@ class Onboard4 extends StatelessWidget {
           child: Opacity(
             opacity: 0.15,
             child: ImageWidget(
-              asset: Assets.onb16,
+              Assets.onb16,
             ),
           ),
         ),
@@ -27,7 +27,7 @@ class Onboard4 extends StatelessWidget {
           left: 0,
           right: 0,
           child: ImageWidget(
-            asset: Assets.onb17,
+            Assets.onb17,
             height: 300,
           ),
         ),

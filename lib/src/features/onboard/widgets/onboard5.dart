@@ -45,7 +45,7 @@ class Onboard5 extends StatelessWidget {
                   Positioned(
                     top: 16,
                     left: 16,
-                    child: ImageWidget(asset: Assets.onb24),
+                    child: ImageWidget(Assets.onb24),
                   ),
                 ],
               ),

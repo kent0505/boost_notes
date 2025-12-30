@@ -30,7 +30,7 @@ class Onboard3 extends StatelessWidget {
           top: 362,
           left: 0,
           child: ImageWidget(
-            asset: Assets.onb15,
+            Assets.onb15,
             height: 82,
           ),
         ),

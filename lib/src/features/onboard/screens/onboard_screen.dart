@@ -67,12 +67,12 @@ class _OnboardScreenState extends State<OnboardScreen> {
             right: 0,
             child: Opacity(
               opacity: 0.2,
-              child: ImageWidget(asset: Assets.bg),
+              child: ImageWidget(Assets.bg),
             ),
           ),
           const Opacity(
             opacity: 0.2,
-            child: ImageWidget(asset: Assets.bg),
+            child: ImageWidget(Assets.bg),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 300),

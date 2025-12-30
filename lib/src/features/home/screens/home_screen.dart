@@ -8,7 +8,7 @@ import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/sheet_widget.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../note/widgets/new_note.dart';
-import '../../tag/widgets/new_tag.dart';
+import '../../tag/widgets/tag_sheet.dart';
 import '../widgets/home_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         SheetWidget.open(
                           context,
                           title: 'Add tag',
-                          child: const NewTag(),
+                          child: const TagSheet(),
                         );
                       },
                     ),
