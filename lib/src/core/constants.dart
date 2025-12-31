@@ -12,7 +12,18 @@ abstract final class Constants {
 
 abstract final class Assets {
   static const String bg = 'assets/bg.png';
-
+  static const String call1 = 'assets/call1.png';
+  static const String call2 = 'assets/call2.png';
+  static const String call3 = 'assets/call3.png';
+  static const String call4 = 'assets/call4.png';
+  static const String call5 = 'assets/call5.png';
+  static const String call6 = 'assets/call6.png';
+  static const String empty = 'assets/empty.png';
+  static const String note1 = 'assets/note1.png';
+  static const String note2 = 'assets/note2.png';
+  static const String note3 = 'assets/note3.png';
+  static const String note4 = 'assets/note4.png';
+  static const String warning = 'assets/warning.png';
   static const String wave = 'assets/wave.json';
 
   static const String add = 'assets/icons/add.svg';

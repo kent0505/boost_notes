@@ -21,14 +21,14 @@ class TagsList extends StatelessWidget {
           return Wrap(
             spacing: 8,
             runSpacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               TagCard(tag: allNotes),
               ...state.tags.map((tag) => TagCard(tag: tag)),
               IconBtn(
                 asset: Assets.add,
-                size: 34,
-                onPressed: () async {
-                  await SheetWidget.open(
+                onPressed: () {
+                  SheetWidget.open(
                     context,
                     title: 'Add tag',
                     child: const TagSheet(),

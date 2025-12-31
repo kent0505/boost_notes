@@ -5,7 +5,7 @@ import '../../../core/widgets/field.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/sheet_widget.dart';
 import '../../../core/widgets/svg_widget.dart';
-import '../../note/widgets/new_note.dart';
+import '../../note/widgets/new_note_sheet.dart';
 import '../../tag/widgets/tags_list.dart';
 import '../widgets/home_appbar.dart';
 
@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Column(
@@ -67,11 +68,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'New Note',
                 asset: Assets.plus,
                 width: Constants.mainButtonWidth,
-                onPressed: () async {
-                  await SheetWidget.open(
+                onPressed: () {
+                  SheetWidget.open(
                     context,
                     title: 'New note',
-                    child: const NewNote(),
+                    child: const NewNoteSheet(),
                   );
                 },
               ),

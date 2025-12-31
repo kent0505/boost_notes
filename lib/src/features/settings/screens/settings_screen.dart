@@ -31,7 +31,6 @@ class SettingsScreen extends StatelessWidget {
               const Spacer(),
               IconBtn(
                 asset: Assets.close,
-                size: 30,
                 onPressed: () {
                   context.pop();
                 },

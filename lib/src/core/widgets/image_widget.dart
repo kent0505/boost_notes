@@ -11,6 +11,7 @@ class ImageWidget extends StatelessWidget {
     this.fit,
     this.borderRadius = BorderRadius.zero,
     this.alignment = Alignment.center,
+    this.color,
   });
 
   final String asset;
@@ -19,6 +20,7 @@ class ImageWidget extends StatelessWidget {
   final BoxFit? fit;
   final BorderRadiusGeometry borderRadius;
   final Alignment alignment;
+  final Color? color;
 
   static Widget errorBuilder(
     BuildContext context,
@@ -53,6 +55,7 @@ class ImageWidget extends StatelessWidget {
         height: height,
         width: width,
         fit: fit,
+        color: color,
         alignment: alignment,
         frameBuilder: frameBuilder,
         errorBuilder: errorBuilder,

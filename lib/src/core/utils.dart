@@ -23,3 +23,21 @@ Future<void> launchURL(String url) async {
     logger('Error launching url: $e');
   }
 }
+
+bool isYoutubeUrl(String value) {
+  final uri = Uri.tryParse(value.trim());
+  if (uri == null) return false;
+
+  // youtu.be/VIDEO_ID
+  if (uri.host == 'youtu.be') {
+    return uri.pathSegments.isNotEmpty;
+  }
+
+  // youtube.com/watch?v=VIDEO_ID
+  if (uri.host.contains('youtube.com')) {
+    return uri.queryParameters.containsKey('v') ||
+        uri.pathSegments.contains('shorts');
+  }
+
+  return false;
+}

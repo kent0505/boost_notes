@@ -8,7 +8,7 @@ final theme = ThemeData(
   fontFamily: AppFonts.w500,
   colorScheme: const ColorScheme.light(
     primary: Colors.black,
-    secondary: Colors.greenAccent, // overscroll
+    secondary: Color(0xffB2CCFF), // overscroll
     surface: Colors.transparent, // bg color when push
   ),
 
@@ -16,14 +16,14 @@ final theme = ThemeData(
   scaffoldBackgroundColor: Colors.transparent,
 
   // DIALOG
-  // dialogTheme: DialogThemeData(
-  //   insetPadding: EdgeInsets.zero,
-  //   backgroundColor: colors.tertiary2,
-  //   elevation: 0,
-  //   shape: const RoundedRectangleBorder(
-  //     borderRadius: BorderRadius.all(Radius.circular(16)),
-  //   ),
-  // ),
+  dialogTheme: const DialogThemeData(
+    insetPadding: EdgeInsets.zero,
+    elevation: 0,
+    backgroundColor: Color(0xffEDEDED),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
+  ),
 
   // BOTTOM SHEET
   bottomSheetTheme: const BottomSheetThemeData(
@@ -36,10 +36,10 @@ final theme = ThemeData(
   ),
 
   // TEXTFIELD
-  textSelectionTheme: const TextSelectionThemeData(
-    cursorColor: Color(0xff1A2969),
-    selectionColor: Color(0xff1A2969),
-    selectionHandleColor: Color(0xff1A2969),
+  textSelectionTheme: TextSelectionThemeData(
+    cursorColor: const Color(0xff1A2969),
+    selectionColor: const Color(0xff1A2969).withValues(alpha: 0.5),
+    selectionHandleColor: const Color(0xff1A2969),
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,

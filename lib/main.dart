@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:dio/dio.dart';
 
 import 'src/core/router.dart';
 import 'src/core/themes.dart';
@@ -44,6 +46,23 @@ void main() async {
       await db.execute(Tag.create);
     },
   );
+
+  await dotenv.load();
+
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: dotenv.env['BASE_URL'] ?? '',
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 30),
+      sendTimeout: const Duration(seconds: 10),
+      validateStatus: (status) => true,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    ),
+  );
+
+  logger(dio.hashCode);
 
   runApp(
     MultiRepositoryProvider(

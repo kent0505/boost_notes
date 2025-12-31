@@ -9,10 +9,12 @@ class SheetWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.child,
+    this.onCLose,
   });
 
   final String title;
   final Widget child;
+  final VoidCallback? onCLose;
 
   static Future<void> open(
     BuildContext context, {
@@ -55,10 +57,10 @@ class SheetWidget extends StatelessWidget {
               const Spacer(),
               IconBtn(
                 asset: Assets.close,
-                size: 30,
-                onPressed: () {
-                  context.pop();
-                },
+                onPressed: onCLose ??
+                    () {
+                      context.pop();
+                    },
               ),
             ],
           ),
