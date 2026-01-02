@@ -37,7 +37,10 @@ class _CallRecordingScreenState extends State<CallRecordingScreen> {
                 child: Column(
                   children: [
                     SizedBox(height: 36),
-                    ImageWidget(Assets.call1),
+                    SizedBox(
+                      height: 240,
+                      child: ImageWidget(Assets.call1),
+                    ),
                     SizedBox(height: 36),
                     Text(
                       'Call recording',

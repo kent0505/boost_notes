@@ -16,11 +16,12 @@ final theme = ThemeData(
   scaffoldBackgroundColor: Colors.transparent,
 
   // DIALOG
-  dialogTheme: const DialogThemeData(
+  dialogTheme: DialogThemeData(
     insetPadding: EdgeInsets.zero,
     elevation: 0,
-    backgroundColor: Color(0xffEDEDED),
-    shape: RoundedRectangleBorder(
+    backgroundColor: const Color(0xffEDEDED),
+    barrierColor: const Color(0xff3E3E3E).withValues(alpha: 0.3),
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(16)),
     ),
   ),

@@ -40,7 +40,7 @@ class HomeAppbar extends StatelessWidget {
             ),
             child: Button(
               onPressed: () {
-                context.push(PaywallScreen.routePath);
+                PaywallScreen.show(context);
               },
               child: const Row(
                 children: [

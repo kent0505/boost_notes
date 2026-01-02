@@ -11,13 +11,20 @@ import 'src/core/router.dart';
 import 'src/core/themes.dart';
 import 'src/core/utils.dart';
 import 'src/core/widgets/gradient_bg.dart';
+import 'src/features/auth/bloc/auth_bloc.dart';
+import 'src/features/auth/data/auth_repository.dart';
+import 'src/features/chat/bloc/chat_bloc.dart';
+import 'src/features/chat/data/chat_repository.dart';
 import 'src/features/note/bloc/note_bloc.dart';
 import 'src/features/note/data/note_repository.dart';
 import 'src/features/note/models/note.dart';
 import 'src/features/onboard/data/onboard_repository.dart';
+import 'src/features/settings/data/settings_repository.dart';
 import 'src/features/tag/bloc/tag_bloc.dart';
 import 'src/features/tag/data/tag_repository.dart';
 import 'src/features/tag/models/tag.dart';
+import 'src/features/vip/bloc/vip_bloc.dart';
+import 'src/features/vip/data/vip_repository.dart';
 
 // final colors = Theme.of(context).extension<MyColors>()!;
 
@@ -51,7 +58,7 @@ void main() async {
 
   final dio = Dio(
     BaseOptions(
-      baseUrl: dotenv.env['BASE_URL'] ?? '',
+      // baseUrl: dotenv.env['BASE_URL'] ?? '',
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 30),
       sendTimeout: const Duration(seconds: 10),
@@ -70,15 +77,32 @@ void main() async {
         RepositoryProvider<OnboardRepository>(
           create: (context) => OnboardRepositoryImpl(prefs: prefs),
         ),
+        RepositoryProvider<SettingsRepository>(
+          create: (context) => SettingsRepositoryImpl(prefs: prefs),
+        ),
+        RepositoryProvider<VipRepository>(
+          create: (context) => VipRepositoryImpl(prefs: prefs),
+        ),
         RepositoryProvider<NoteRepository>(
           create: (context) => NoteRepositoryImpl(db: db),
         ),
         RepositoryProvider<TagRepository>(
           create: (context) => TagRepositoryImpl(db: db),
         ),
+        RepositoryProvider<AuthRepository>(
+          create: (context) => AuthRepositoryImpl(dio: dio),
+        ),
+        RepositoryProvider<ChatRepository>(
+          create: (context) => ChatRepositoryImpl(dio: dio),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(
+            create: (context) => VipBloc(
+              repository: context.read<VipRepository>(),
+            )..add(CheckVip()),
+          ),
           BlocProvider(
             create: (context) => NoteBloc(
               repository: context.read<NoteRepository>(),
@@ -88,6 +112,16 @@ void main() async {
             create: (context) => TagBloc(
               repository: context.read<TagRepository>(),
             )..add(LoadTags()),
+          ),
+          BlocProvider(
+            create: (context) => AuthBloc(
+              repository: context.read<AuthRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => ChatBloc(
+              repository: context.read<ChatRepository>(),
+            ),
           ),
         ],
         child: MaterialApp.router(

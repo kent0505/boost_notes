@@ -1,8 +1,8 @@
-import 'package:boost_notes/src/core/widgets/svg_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 import 'button.dart';
+import 'svg_widget.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({
@@ -31,11 +31,17 @@ class MainButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: LinearGradient(
-          colors: [
-            Color(active ? 0xff22428E : 0xff727fcd),
-            Color(active ? 0xff6C6CFF : 0xff8d8ef5),
-            Color(active ? 0xff22428E : 0xff727fcd),
-          ],
+          colors: active
+              ? [
+                  const Color(0xff22428E),
+                  const Color(0xff6C6CFF),
+                  const Color(0xff22428E),
+                ]
+              : [
+                  const Color(0xff727fcd),
+                  const Color(0xff8d8ef5),
+                  const Color(0xff727fcd),
+                ],
         ),
       ),
       child: Button(
