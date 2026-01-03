@@ -1,4 +1,4 @@
-package com.example.boost_notes
+package com.pump.voice.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -69,11 +69,12 @@ void main() async {
     ),
   );
 
-  logger(dio.hashCode);
-
   runApp(
     MultiRepositoryProvider(
       providers: [
+        RepositoryProvider<AuthRepository>(
+          create: (context) => AuthRepositoryImpl(dio: dio),
+        ),
         RepositoryProvider<OnboardRepository>(
           create: (context) => OnboardRepositoryImpl(prefs: prefs),
         ),
@@ -89,15 +90,17 @@ void main() async {
         RepositoryProvider<TagRepository>(
           create: (context) => TagRepositoryImpl(db: db),
         ),
-        RepositoryProvider<AuthRepository>(
-          create: (context) => AuthRepositoryImpl(dio: dio),
-        ),
         RepositoryProvider<ChatRepository>(
           create: (context) => ChatRepositoryImpl(dio: dio),
         ),
       ],
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(
+            create: (context) => AuthBloc(
+              repository: context.read<AuthRepository>(),
+            ),
+          ),
           BlocProvider(
             create: (context) => VipBloc(
               repository: context.read<VipRepository>(),
@@ -112,11 +115,6 @@ void main() async {
             create: (context) => TagBloc(
               repository: context.read<TagRepository>(),
             )..add(LoadTags()),
-          ),
-          BlocProvider(
-            create: (context) => AuthBloc(
-              repository: context.read<AuthRepository>(),
-            ),
           ),
           BlocProvider(
             create: (context) => ChatBloc(

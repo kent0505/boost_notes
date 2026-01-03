@@ -79,6 +79,7 @@ abstract final class Keys {
   static const String onboard = 'onboard';
   static const String translate = 'translate';
   static const String free = 'free';
+  static const String userID = 'userID';
 }
 
 abstract final class Urls {
