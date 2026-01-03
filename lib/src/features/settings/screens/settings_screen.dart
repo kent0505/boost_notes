@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../core/constants.dart';
 import '../../../core/utils.dart';
@@ -27,24 +29,37 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  void onLogout() {
-    DialogWidget.show(
-      context,
-      title: 'Are sure you want to sign out?',
-      subtitle:
-          'This action will permanently delete your account and all associated data. This cannot be undone.',
-      buttonTexts: ['Cancel', 'Sign out'],
-      buttonColors: [const Color(0xff2581CE), const Color(0xffCA373F)],
-      onPresseds: [
-        () {
-          context.pop();
-        },
-        () {
-          context.read<AuthBloc>().add(LogoutEvent());
-          context.pop();
-        },
-      ],
+  void onLogout() async {
+    final signIn = GoogleSignIn.instance;
+    await signIn.initialize(
+      serverClientId: dotenv.env['SERVER_CLIENT_ID'] ?? '',
     );
+
+    try {
+      final auth = await signIn.authenticate();
+
+      logger(auth.id);
+      logger(auth.email);
+    } catch (e) {
+      logger(e);
+    }
+    // DialogWidget.show(
+    //   context,
+    //   title: 'Are sure you want to sign out?',
+    //   subtitle:
+    //       'This action will permanently delete your account and all associated data. This cannot be undone.',
+    //   buttonTexts: ['Cancel', 'Sign out'],
+    //   buttonColors: [const Color(0xff2581CE), const Color(0xffCA373F)],
+    //   onPresseds: [
+    //     () {
+    //       context.pop();
+    //     },
+    //     () {
+    //       context.read<AuthBloc>().add(LogoutEvent());
+    //       context.pop();
+    //     },
+    //   ],
+    // );
   }
 
   void onDeleteAccount() {
