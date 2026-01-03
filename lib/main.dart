@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 import 'src/core/router.dart';
 import 'src/core/themes.dart';
 import 'src/core/utils.dart';
-import 'src/core/widgets/gradient_bg.dart';
 import 'src/features/auth/bloc/auth_bloc.dart';
 import 'src/features/auth/data/auth_repository.dart';
 import 'src/features/chat/bloc/chat_bloc.dart';
@@ -25,8 +24,6 @@ import 'src/features/tag/data/tag_repository.dart';
 import 'src/features/tag/models/tag.dart';
 import 'src/features/vip/bloc/vip_bloc.dart';
 import 'src/features/vip/data/vip_repository.dart';
-
-// final colors = Theme.of(context).extension<MyColors>()!;
 
 // adb tcpip 5555 && adb connect 192.168.0.190
 
@@ -127,9 +124,6 @@ void main() async {
           themeMode: ThemeMode.light,
           theme: theme,
           routerConfig: routerConfig,
-          builder: (context, child) {
-            return GradientBg(child);
-          },
         ),
       ),
     ),

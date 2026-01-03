@@ -5,10 +5,8 @@ import 'package:gradient_borders/gradient_borders.dart';
 import '../../../core/constants.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/image_widget.dart';
-import '../../../core/widgets/sheet_widget.dart';
 import '../screens/call_recording_screen.dart';
 import 'record_sheet.dart';
-import 'youtube_sheet.dart';
 
 class NewNoteSheet extends StatelessWidget {
   const NewNoteSheet({super.key});
@@ -41,30 +39,30 @@ class NewNoteSheet extends StatelessWidget {
             );
           },
         ),
+        // _Tile(
+        //   title: 'YouTube video',
+        //   asset: Assets.note2,
+        //   color: const Color(0xff7DFF4D).withValues(alpha: 0.35),
+        //   gradient: const [
+        //     Color(0xffD3CFCF),
+        //     Color(0xffD3CFCF),
+        //     Color(0xff289400),
+        //     Color(0xff289400),
+        //     Color(0xff289400),
+        //     Color(0xff289400),
+        //     Color(0xff289400),
+        //   ],
+        //   onPressed: () {
+        //     context.pop();
+        //     SheetWidget.open(
+        //       context,
+        //       title: 'YouTube note',
+        //       child: const YoutubeSheet(),
+        //     );
+        //   },
+        // ),
         _Tile(
-          title: 'YouTube video',
-          asset: Assets.note2,
-          color: const Color(0xff7DFF4D).withValues(alpha: 0.35),
-          gradient: const [
-            Color(0xffD3CFCF),
-            Color(0xffD3CFCF),
-            Color(0xff289400),
-            Color(0xff289400),
-            Color(0xff289400),
-            Color(0xff289400),
-            Color(0xff289400),
-          ],
-          onPressed: () {
-            context.pop();
-            SheetWidget.open(
-              context,
-              title: 'YouTube note',
-              child: const YoutubeSheet(),
-            );
-          },
-        ),
-        _Tile(
-          title: 'Upload voice memo',
+          title: 'Upload voice',
           asset: Assets.note3,
           color: const Color(0xffE2C199),
           gradient: const [

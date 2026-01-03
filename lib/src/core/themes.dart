@@ -8,12 +8,12 @@ final theme = ThemeData(
   fontFamily: AppFonts.w500,
   colorScheme: const ColorScheme.light(
     primary: Colors.black,
-    secondary: Color(0xffB2CCFF), // overscroll
-    surface: Colors.transparent, // bg color when push
+    secondary: Color(0xffF6F7F9), // overscroll
+    surface: Color(0xffB2CCFF), // bg color when push
   ),
 
   // SCAFFOLD
-  scaffoldBackgroundColor: Colors.transparent,
+  scaffoldBackgroundColor: const Color(0xffB2CCFF),
 
   // DIALOG
   dialogTheme: DialogThemeData(
